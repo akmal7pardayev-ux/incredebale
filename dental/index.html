@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shizuka Dental — 静歯科</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f3ec; --paper2:#efebe1; --ink:#1c1b19; --ink2:#55524b; --ink3:#6b665c;
+  --line:rgba(28,27,25,.13); --shu:#c4432b; --shu-soft:#f3e2dc; --moss:#5d6b4a; --moss-soft:#e5e8dc;
+  --serif:'Shippori Mincho',serif; --sans:'Zen Kaku Gothic New',system-ui,sans-serif;
+  --gut:clamp(16px,4vw,56px); --max:1180px; --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+::selection{background:var(--shu);color:#fff}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.jp{font-family:var(--serif)}
+.lbl{display:flex;align-items:baseline;gap:12px;font-size:13px;color:var(--ink3)}
+.lbl{flex-wrap:wrap}
+.lbl .jp{white-space:nowrap;font-size:13px;letter-spacing:.3em;color:var(--ink);text-transform:none}
+.lbl i{display:inline-block;width:28px;height:1px;background:var(--ink3);transform:translateY(-4px)}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.35;letter-spacing:.02em;margin:24px 0 0}
+section{padding:clamp(80px,12vw,150px) 0;border-top:1px solid var(--line)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:48px;padding:0 24px;font-size:15px;font-weight:500;border:1px solid var(--ink);transition:background-color .16s var(--ease),color .16s var(--ease),border-color .16s var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn-shu{background:var(--shu);border-color:var(--shu);color:#fff}
+.btn-shu:hover{background:#a8361f;border-color:#a8361f}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn svg{width:18px;height:18px}
+
+/* ---------- top status bar ---------- */
+.status{background:var(--ink);color:var(--paper);font-size:13px}
+.status .wrap{display:flex;justify-content:space-between;align-items:center;height:40px;gap:16px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#7fbf6a;margin-right:8px;box-shadow:0 0 0 0 rgba(127,191,106,.6);animation:pulse 2s infinite}
+.dot.closed{background:var(--shu);box-shadow:none;animation:none}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(127,191,106,0)}100%{box-shadow:0 0 0 0 rgba(127,191,106,0)}}
+.status a{border-bottom:1px solid rgba(246,243,236,.4)}
+.status .em{color:#f0b2a3}
+.hide-d{display:none}
+@media (max-width:860px){.hide-d{display:inline}}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:40;background:rgba(246,243,236,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px}
+.seal{width:36px;height:36px;background:var(--shu);color:#fff;font-family:var(--serif);font-size:20px;display:grid;place-items:center;border-radius:4px;line-height:1}
+.brand b{font-family:var(--serif);font-weight:500;font-size:17px;letter-spacing:.08em;display:block;line-height:1.2}
+.brand small{font-size:12px;color:var(--ink3)}
+header nav{display:flex;gap:32px;font-size:14px}
+header nav a{position:relative}
+header nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .3s var(--ease)}
+header nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.h-call{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500}
+.h-call span{color:var(--ink3);font-size:12px;display:block;line-height:1.2}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(32px,4vw,56px) 0 clamp(64px,8vw,112px);border:0;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.7fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,5.4vw,68px);line-height:1.12;letter-spacing:.01em}
+.hero h1 em{font-style:normal;color:var(--shu)}
+.hero p.sub{font-size:clamp(15px,1.6vw,17px);color:var(--ink2);margin:24px 0 24px;max-width:30em}
+.next{display:flex;align-items:center;gap:16px;padding:16px 24px;background:#fff;border:1px solid var(--line);margin-bottom:16px;max-width:520px}
+.next .t{font-family:var(--serif);font-size:30px;line-height:1;letter-spacing:.02em}
+.next small{display:block;font-size:13px;color:var(--ink3);margin-bottom:4px}
+.next .bar{width:1px;align-self:stretch;background:var(--line)}
+.next .who{font-size:13px;color:var(--ink2);line-height:1.5}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.promise{display:flex;flex-wrap:wrap;gap:8px 24px;margin:0 0 32px;font-size:13px;color:var(--ink2)}
+.promise li{list-style:none;display:flex;gap:8px;align-items:center}
+.promise li::before{content:"";width:4px;height:4px;background:var(--ink3);border-radius:50%}
+.enso-box{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:center}
+.enso{width:100%;height:100%}
+.enso path{fill:none;stroke:var(--ink);stroke-linecap:round}
+.enso-box .vt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);writing-mode:vertical-rl;font-family:var(--serif);font-size:clamp(22px,2.6vw,32px);letter-spacing:.35em;line-height:1.9;color:var(--ink)}
+.enso-box .vt span{color:var(--shu)}
+
+/* ---------- triage ---------- */
+.triage-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,96px);margin-top:48px}
+.q{font-family:var(--serif);font-size:18px;margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.chip{border:1px solid var(--line);background:#fff;padding:8px 16px;min-height:40px;font-size:14px;transition:background-color .16s var(--ease),color .16s var(--ease),border-color .16s var(--ease)}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.scale{display:flex;gap:4px}
+.scale button{flex:1;height:44px;border:1px solid var(--line);background:#fff;font-size:13px;transition:background-color .16s var(--ease),color .16s var(--ease),border-color .16s var(--ease)}
+.scale button.on{color:#fff;border-color:transparent}
+.scale-l{display:flex;justify-content:space-between;font-size:12px;color:var(--ink3);margin-top:8px}
+.result{background:#fff;border:1px solid var(--line);padding:clamp(24px,3.5vw,44px);position:relative}
+.result .lv{display:inline-flex;align-items:center;gap:8px;font-size:13px;padding:4px 12px;background:var(--moss-soft);color:var(--moss)}
+.result .lv.hi{background:var(--shu-soft);color:var(--shu)}
+.result h3{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.4vw,28px);line-height:1.4;margin:16px 0 8px}
+.result > p{color:var(--ink2);font-size:14px}
+.result ol{list-style:none;counter-reset:s;margin:24px 0;border-top:1px solid var(--line)}
+.result ol li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.result ol li::before{content:counter(s,cjk-ideographic);font-family:var(--serif);color:var(--ink3)}
+.warn{font-size:13px;color:var(--ink2);padding:12px 16px;background:var(--paper);border-left:2px solid var(--shu);margin-bottom:24px}
+.warn b{color:var(--ink)}
+.disc{font-size:11px;color:var(--ink3);margin-top:16px}
+
+/* ---------- booking ---------- */
+.book-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);margin-top:48px}
+.days{display:flex;gap:8px;margin-bottom:20px}
+.day{flex:1;border:1px solid var(--line);background:#fff;padding:12px 8px;text-align:center;font-size:13px;line-height:1.4;transition:background-color .16s var(--ease),color .16s var(--ease),border-color .16s var(--ease)}
+.day b{display:block;font-family:var(--serif);font-size:20px;font-weight:500}
+.day[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot{height:44px;border:1px solid var(--line);background:#fff;font-size:14px;transition:background-color .16s var(--ease),color .16s var(--ease),border-color .16s var(--ease)}
+.slot:hover:not(:disabled){border-color:var(--ink)}
+.slot:disabled{color:var(--ink3);text-decoration:line-through;background:transparent;cursor:not-allowed}
+.slot[aria-pressed="true"]{background:var(--shu);border-color:var(--shu);color:#fff}
+.slot-note{font-size:12px;color:var(--ink3);margin-top:12px}
+form.bk{display:flex;flex-direction:column;gap:20px}
+.f label{display:block;font-size:13px;color:var(--ink3);margin-bottom:4px}
+.f input,.f textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--ink);padding:8px 0;font-size:16px;outline:none;border-radius:0}
+.f textarea{resize:none;height:76px}
+.f input:focus,.f textarea:focus{border-color:var(--shu)}
+.sum{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px}
+.sum b{font-family:var(--serif);font-size:18px;font-weight:500}
+.ok{display:none;background:#fff;border:1px solid var(--line);padding:40px;text-align:center}
+.ok.show{display:block;animation:rise .4s var(--ease)}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+.ok .seal{width:64px;height:64px;font-size:32px;margin:0 auto 20px}
+.ok h3{font-family:var(--serif);font-weight:500;font-size:26px}
+.ok p{color:var(--ink2);margin-top:8px;font-size:14px}
+
+/* ---------- prices ---------- */
+.price-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(32px,6vw,96px);margin-top:48px}
+.price-side p{color:var(--ink2);font-size:14px;margin-bottom:24px}
+.tbl{border-top:1px solid var(--ink)}
+.row{display:grid;grid-template-columns:1fr auto;gap:20px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.row h4{font-family:var(--serif);font-weight:500;font-size:19px}
+.row p{font-size:13px;color:var(--ink3);margin-top:2px}
+.row .p{font-family:var(--serif);font-size:22px;white-space:nowrap}
+.row .p small{font-family:var(--sans);font-size:12px;color:var(--ink3);margin-right:8px}
+.row.hl h4::after{content:"Most toothaches start here";margin-left:12px;font-family:var(--sans);font-size:12px;color:var(--ink3);vertical-align:middle}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);margin-top:64px;border-top:1px solid var(--line)}
+.step{padding:32px 24px 0 0;position:relative}
+.step + .step{padding-left:24px;border-left:1px solid var(--line)}
+.step .k{font-family:var(--serif);font-size:44px;line-height:1;color:var(--ink)}
+.step .m{font-size:13px;color:var(--ink3);margin:16px 0 4px}
+.step h4{font-family:var(--serif);font-weight:500;font-size:19px;margin-bottom:8px}
+.step p{font-size:14px;color:var(--ink2)}
+
+/* ---------- doctors ---------- */
+.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:64px}
+.doc .ph{aspect-ratio:4/5;background:var(--paper2);position:relative;overflow:hidden;display:grid;place-items:center}
+.doc .ph svg{width:62%;opacity:.9}
+.doc .ph .kj{position:absolute;top:16px;right:16px;writing-mode:vertical-rl;font-family:var(--serif);font-size:13px;letter-spacing:.3em;color:var(--ink3)}
+.doc h4{font-family:var(--serif);font-weight:500;font-size:20px;margin-top:16px}
+.doc .r{font-size:13px;color:var(--ink3)}
+.doc p{font-size:14px;color:var(--ink2);margin-top:8px}
+
+/* ---------- voices ---------- */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:64px}
+blockquote{border-top:1px solid var(--ink);padding-top:24px}
+blockquote p{font-family:var(--serif);font-size:18px;line-height:1.7}
+blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--ink3);margin-top:16px}
+.sample{font-size:12px;color:var(--ink3);margin-top:32px}
+
+/* ---------- visit ---------- */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);margin-top:48px}
+.hours{border-top:1px solid var(--ink)}
+.hours div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.hours div.today{color:var(--shu);font-weight:500}
+.hours div.today span:first-child::after{content:" — today";font-size:12px}
+.map{aspect-ratio:4/3;background:#fff;border:1px solid var(--line);position:relative;overflow:hidden}
+.map svg{width:100%;height:100%;display:block}
+.addr{margin-top:20px;font-size:14px;color:var(--ink2)}
+.addr b{font-family:var(--serif);font-weight:500;color:var(--ink);font-size:18px;display:block}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin-top:24px;font-size:13px;color:var(--ink2)}
+.facts span::before{content:"— ";color:var(--shu)}
+
+/* ---------- faq ---------- */
+.faq{margin-top:48px;border-top:1px solid var(--ink);max-width:860px}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-family:var(--serif);font-size:clamp(17px,1.8vw,20px)}
+summary::-webkit-details-marker{display:none}
+summary i{width:14px;height:14px;position:relative;flex:none}
+summary i::before,summary i::after{content:"";position:absolute;left:0;top:50%;width:14px;height:1px;background:var(--ink);transition:transform .2s var(--ease)}
+summary i::after{transform:rotate(90deg)}
+details[open] summary i::after{transform:rotate(0)}
+details p{padding:0 0 24px;color:var(--ink2);max-width:46em;font-size:15px}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:var(--paper);padding:clamp(72px,10vw,120px) 0 32px}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end;padding-bottom:64px;border-bottom:1px solid rgba(246,243,236,.15)}
+.f-top h2{color:var(--paper);margin:0}
+.f-top .btn{border-color:var(--paper)}
+.f-top .btn-ghost:hover{background:var(--paper);color:var(--ink)}
+.f-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;font-size:12px;color:rgba(246,243,236,.7)}
+
+/* ---------- mobile bottom bar ---------- */
+.mbar{display:none}
+.next .t,.row .p,.slot,.day b,.hours,.scale button,.status{font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media (max-width:860px){
+  header nav,.h-call{display:none}
+  .hero .wrap,.triage-grid,.book-grid,.price-grid,.visit-grid,.f-top{grid-template-columns:1fr}
+  .hero{padding-top:36px}
+  .hero .wrap{position:relative}
+  .enso-box{position:absolute;top:-16px;right:var(--gut);width:120px;max-width:none;pointer-events:none}
+  .enso-box .vt{font-size:13px;letter-spacing:.2em;line-height:1.7}
+  .hero .lbl{max-width:calc(100% - 132px)}
+  .hero h1{margin-top:32px !important}
+  .status .wrap{height:auto;min-height:40px;padding-top:8px;padding-bottom:8px;font-size:12px}
+  .status .em .lbl-l{display:none}
+  .steps{grid-template-columns:1fr 1fr}
+  .step:nth-child(3){padding-left:0;border-left:0}
+  .step{padding-bottom:32px}
+  .docs,.voices{grid-template-columns:1fr}
+  .doc{display:grid;grid-template-columns:112px 1fr;gap:16px;align-items:start}
+  .doc h4{margin-top:0}
+  .slots{grid-template-columns:repeat(3,1fr)}
+  .status .hide-m{display:none}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paper);border-top:1px solid var(--line);padding:12px 12px calc(12px + env(safe-area-inset-bottom));gap:8px}
+  .mbar .btn{height:48px;padding:0 12px}
+  body{padding-bottom:72px}
+  .next{max-width:none}
+  .ctas .btn{flex:1;white-space:nowrap;padding:0 16px}
+  .row.hl h4::after{display:block;margin:4px 0 0}
+}
+@media (max-width:480px){
+  .steps{grid-template-columns:1fr}
+  .step,.step + .step{padding-left:0;border-left:0;border-bottom:1px solid var(--line)}
+  .facts{grid-template-columns:1fr}
+  .next{flex-wrap:wrap;gap:8px}
+  .next .bar{display:none}
+  .next .who{flex-basis:100%;border-top:1px solid var(--line);padding-top:8px}
+  .next .who br{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}#enso{transition:none !important}}
+</style>
+</head>
+<body>
+
+<div class="status">
+  <div class="wrap">
+    <span><span class="dot" id="dot"></span><span id="openTxt">Open now</span></span>
+    <span class="em"><span class="hide-m">Severe pain or swelling? </span><span class="lbl-l">24/7 emergency line </span><span class="hide-d">24/7 </span><a href="tel:+10000000000">+1 000 000 0000</a></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="seal">静</span><span><b>SHIZUKA DENTAL</b><small>静歯科 · since 2009</small></span></a>
+    <nav>
+      <a href="#pain">Toothache help</a>
+      <a href="#book">Book today</a>
+      <a href="#prices">Prices</a>
+      <a href="#visit">Find us</a>
+    </nav>
+    <a class="h-call" href="tel:+10000000000"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span><span>Call us</span>+1 000 000 0000</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="lbl"><span class="jp">今日、診ます</span><i></i>Same-day toothache care</div>
+        <h1 style="margin-top:24px">Toothache?<br>We can see you <em>today</em></h1>
+        <p class="sub">Calm, gentle dentistry for when it really hurts. We relieve the pain first, explain everything second, and never start treatment before you know the price.</p>
+        <ul class="promise">
+          <li>Pain relief at the first visit</li>
+          <li>Numbing gel before every injection</li>
+          <li>Price agreed before treatment</li>
+        </ul>
+        <div class="next">
+          <div><small>Next free time</small><div class="t" id="nextT">—</div></div>
+          <div class="bar"></div>
+          <div class="who" id="nextWho">with Dr. Aiko Mori<br> · 15 min from the city centre</div>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-shu" href="#book">Book this time <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="tel:+10000000000">Call now</a>
+        </div>
+      </div>
+      <div class="enso-box" aria-hidden="true">
+        <svg class="enso" viewBox="0 0 400 400">
+          <path id="enso" d="M318 112 C 362 170, 352 268, 286 318 C 220 366, 118 352, 76 286 C 34 220, 52 126, 120 82 C 176 46, 252 50, 300 92" stroke-width="15"/>
+        </svg>
+        <div class="vt">痛みに、<span>静</span>けさを。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIAGE -->
+  <section id="pain">
+    <div class="wrap">
+      <div class="lbl"><span class="jp">応急</span><i></i>Before you come in</div>
+      <h2>Tell us how it hurts,<br>we'll tell you what helps right now</h2>
+      <div class="triage-grid">
+        <div>
+          <div class="q">What does it feel like?</div>
+          <div class="chips" id="chips">
+            <button class="chip" data-k="throb" aria-pressed="false">Throbbing, constant</button>
+            <button class="chip" data-k="bite" aria-pressed="false">Sharp when biting</button>
+            <button class="chip" data-k="cold" aria-pressed="false">Hurts with hot / cold</button>
+            <button class="chip" data-k="swell" aria-pressed="false">Swelling in face or gum</button>
+            <button class="chip" data-k="broken" aria-pressed="false">Broken / chipped tooth</button>
+            <button class="chip" data-k="wisdom" aria-pressed="false">Back of the jaw (wisdom tooth)</button>
+            <button class="chip" data-k="night" aria-pressed="false">Keeps me awake at night</button>
+          </div>
+          <div class="q">How bad is it?</div>
+          <div class="scale" id="scale"></div>
+          <div class="scale-l"><span>Annoying</span><span>Worst ever</span></div>
+        </div>
+        <div class="result" id="result" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="book">
+    <div class="wrap">
+      <div class="lbl"><span class="jp">予約</span><i></i>Book in 30 seconds</div>
+      <h2>Pick a time, no account needed</h2>
+      <div class="book-grid">
+        <div>
+          <div class="days" id="days"></div>
+          <div class="slots" id="slots"></div>
+          <div class="slot-note">We hold 6 emergency times every day for people in pain. Can't see a time that works? Call and we'll fit you in.</div>
+        </div>
+        <div>
+          <form class="bk" id="bk" novalidate>
+            <div class="sum"><span>Your time</span><b id="sumT">Choose a time</b></div>
+            <div class="f"><label for="nm">Your name</label><input id="nm" autocomplete="name" required></div>
+            <div class="f"><label for="ph">Phone — we'll text a confirmation</label><input id="ph" type="tel" autocomplete="tel" inputmode="tel" required></div>
+            <div class="f"><label for="nt">What's wrong? (optional)</label><textarea id="nt"></textarea></div>
+            <button class="btn btn-shu" type="submit">Confirm appointment</button>
+            <div class="disc" style="margin:0">Emergency exam from $45 · Pay after your visit · Cancel any time by text</div>
+          </form>
+          <div class="ok" id="ok">
+            <div class="seal">静</div>
+            <h3>See you soon</h3>
+            <p id="okTxt"></p>
+            <p style="font-size:12px;color:var(--ink3);margin-top:16px">Demo site — no booking was actually sent.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICES -->
+  <section id="prices">
+    <div class="wrap">
+      <div class="lbl"><span class="jp">料金</span><i></i>Honest prices</div>
+      <div class="price-grid">
+        <div class="price-side">
+          <h2>No surprises<br>on the bill</h2>
+          <p style="margin-top:24px">You'll always see the full price on a screen before we start. If you decide to wait, you only pay for the exam.</p>
+          <p>Most insurance accepted. Interest-free payment in 3 parts on anything over $300.</p>
+        </div>
+        <div class="tbl">
+          <div class="row hl"><div><h4>Emergency exam + X-ray</h4><p>Diagnosis, pain relief, a clear plan</p></div><div class="p"><small>from</small>$45</div></div>
+          <div class="row"><div><h4>Filling</h4><p>Tooth-coloured, done the same day</p></div><div class="p"><small>from</small>$90</div></div>
+          <div class="row"><div><h4>Root canal treatment</h4><p>Saves the tooth · 1–2 visits</p></div><div class="p"><small>from</small>$320</div></div>
+          <div class="row"><div><h4>Extraction</h4><p>Simple or wisdom tooth</p></div><div class="p"><small>from</small>$110</div></div>
+          <div class="row"><div><h4>Temporary crown</h4><p>Protects a broken tooth</p></div><div class="p"><small>from</small>$70</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section id="flow">
+    <div class="wrap">
+      <div class="lbl"><span class="jp">流れ</span><i></i>Your first visit</div>
+      <h2>What happens when you walk in</h2>
+      <div class="steps">
+        <div class="step"><div class="k">一</div><div class="m">0 min</div><h4>Tea, not paperwork</h4><p>A quiet room and a cup of tea. Two questions, and that's it.</p></div>
+        <div class="step"><div class="k">二</div><div class="m">5 min</div><h4>Look &amp; X-ray</h4><p>Low-dose digital X-ray. You see the picture on screen with us.</p></div>
+        <div class="step"><div class="k">三</div><div class="m">15 min</div><h4>The pain stops</h4><p>Numbing gel first, then a slow, gentle anaesthetic. Most people feel relief right away.</p></div>
+        <div class="step"><div class="k">四</div><div class="m">30 min</div><h4>A clear plan</h4><p>Options, prices and timing in writing. You choose and nothing is rushed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS -->
+  <section id="doctors">
+    <div class="wrap">
+      <div class="lbl"><span class="jp">医師</span><i></i>Gentle hands</div>
+      <h2>Dentists who are known<br>for being gentle</h2>
+      <div class="docs">
+        <div class="doc"><div class="ph"><span class="kj">森 愛子</span><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="#1c1b19" stroke-width="1.2"/><path d="M18 96c4-22 18-32 32-32s28 10 32 32" fill="none" stroke="#1c1b19" stroke-width="1.2"/></svg></div><div><div class="r">Lead dentist</div><h4>Dr. Aiko Mori</h4><p>Emergency care and root canals. 16 years helping anxious patients.</p></div></div>
+        <div class="doc"><div class="ph"><span class="kj">高橋 健</span><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="#1c1b19" stroke-width="1.2"/><path d="M18 96c4-22 18-32 32-32s28 10 32 32" fill="none" stroke="#1c1b19" stroke-width="1.2"/></svg></div><div><div class="r">Oral surgeon</div><h4>Dr. Ken Takahashi</h4><p>Wisdom teeth and extractions. Calm, fast, and very gentle.</p></div></div>
+        <div class="doc"><div class="ph"><span class="kj">佐藤 花</span><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="#1c1b19" stroke-width="1.2"/><path d="M18 96c4-22 18-32 32-32s28 10 32 32" fill="none" stroke="#1c1b19" stroke-width="1.2"/></svg></div><div><div class="r">Family dentist</div><h4>Dr. Hana Sato</h4><p>Children and nervous patients. Explains every step before it happens.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICES -->
+  <section>
+    <div class="wrap">
+      <div class="lbl"><span class="jp">声</span><i></i>Patients</div>
+      <h2>From people who came in hurting</h2>
+      <div class="voices">
+        <blockquote><p>“I called at 8 in the morning crying from the pain. By 9:30 it was gone.”</p><cite>— Sample review</cite></blockquote>
+        <blockquote><p>“I've been afraid of dentists my whole life. I didn't feel the injection at all.”</p><cite>— Sample review</cite></blockquote>
+        <blockquote><p>“They showed me the price before doing anything. That alone made me trust them.”</p><cite>— Sample review</cite></blockquote>
+      </div>
+      <div class="sample">Placeholder testimonials for this design concept. Replace them with real patient reviews.</div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="wrap">
+      <div class="lbl"><span class="jp">所在地</span><i></i>Find us</div>
+      <h2>Easy to reach, easy to park</h2>
+      <div class="visit-grid">
+        <div>
+          <div class="map">
+            <svg viewBox="0 0 400 300" aria-label="Map of the clinic location">
+              <rect width="400" height="300" fill="#fff"/>
+              <g stroke="#e3ded2" stroke-width="10" fill="none"><path d="M-10 90 H410"/><path d="M-10 210 H410"/><path d="M120 -10 V310"/><path d="M290 -10 V310"/></g>
+              <g stroke="#ece8de" stroke-width="4" fill="none"><path d="M-10 150 H410"/><path d="M200 -10 V310"/><path d="M40 -10 V310"/></g>
+              <path d="M0 260 C 80 240, 160 280, 260 250 S 380 230, 410 245" stroke="#cfdbe0" stroke-width="18" fill="none"/>
+              <rect x="300" y="100" width="70" height="40" fill="#e5e8dc"/>
+              <text x="335" y="124" font-size="9" text-anchor="middle" fill="#5d6b4a" font-family="sans-serif">PARK</text>
+              <circle cx="205" cy="148" r="22" fill="#c4432b" opacity=".12"/>
+              <circle cx="205" cy="148" r="11" fill="#c4432b"/>
+              <text x="205" y="152" font-size="11" text-anchor="middle" fill="#fff" font-family="serif">静</text>
+              <text x="225" y="128" font-size="11" fill="#1c1b19" font-family="sans-serif">Shizuka Dental</text>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="hours" id="hours"></div>
+          <div class="addr"><b>12 Sakura Street, 2nd floor</b>Above the flower shop · 3 min walk from Central Station</div>
+          <div class="facts"><span>Free parking behind the building</span><span>Lift &amp; step-free access</span><span>English &amp; Japanese spoken</span><span>Card, cash &amp; insurance</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="lbl"><span class="jp">質問</span><i></i>Questions people ask in pain</div>
+      <div class="faq">
+        <details><summary>Will it hurt?<i></i></summary><p>We numb the area with gel before any injection, then inject slowly. Most patients say they barely felt it. If anything feels wrong you raise your hand and we stop. Always.</p></details>
+        <details><summary>Can you really see me today?<i></i></summary><p>Yes. We keep six emergency times free every day for people in pain. If they're full, call us and we'll still find a way to see you, even if it's for a short pain-relief visit.</p></details>
+        <details><summary>Will you pull my tooth out?<i></i></summary><p>Only if you want us to, or if there's truly no other option. Saving the tooth is our first choice, and we'll explain both options and their prices.</p></details>
+        <details><summary>I don't have insurance. What will it cost?<i></i></summary><p>The emergency exam and X-ray start at $45. You'll see every price before treatment, and anything over $300 can be paid in three interest-free parts.</p></details>
+        <details><summary>It's the middle of the night. What do I do?<i></i></summary><p>Call our 24/7 line. A dentist will talk you through it and book you for the first time in the morning. If swelling spreads toward your eye or neck, or you find it hard to breathe or swallow, go to the emergency room straight away.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <h2>You don't have to wait<br>for it to get worse</h2>
+      <div class="ctas"><a class="btn btn-shu" href="#book">Book today</a><a class="btn btn-ghost" href="tel:+10000000000">+1 000 000 0000</a></div>
+    </div>
+    <div class="f-bot"><span>静歯科 Shizuka Dental — a design concept. Clinic, people, prices and reviews are fictional.</span><span>Mon–Sat 8:00–21:00 · Sun 10:00–18:00</span></div>
+  </div>
+</footer>
+
+<div class="mbar"><a class="btn btn-ghost" href="tel:+10000000000">Call now</a><a class="btn btn-shu" href="#book" id="mbook">Book today</a></div>
+
+<script>
+(() => {
+const $=s=>document.querySelector(s);
+const HOURS={0:[10,18],1:[8,21],2:[8,21],3:[8,21],4:[8,21],5:[8,21],6:[8,21]};
+const DAYN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const fmt=m=>`${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;
+const now=new Date(), nowMin=now.getHours()*60+now.getMinutes(), today=now.getDay();
+
+/* ---------- open status ---------- */
+const [o,c]=HOURS[today];
+const isOpen=nowMin>=o*60 && nowMin<c*60;
+$('#dot').classList.toggle('closed',!isOpen);
+$('#openTxt').textContent=isOpen?`Open now · until ${c}:00`:`Closed · opens ${nowMin<o*60?'today':'tomorrow'} at ${fmt((nowMin<o*60?o:HOURS[(today+1)%7][0])*60)}`;
+
+/* ---------- slots ---------- */
+function seeded(n){let x=Math.sin(n)*10000;return x-Math.floor(x);}
+function slotsFor(offset){
+  const d=new Date(now); d.setDate(d.getDate()+offset);
+  const [a,b]=HOURS[d.getDay()]; const out=[];
+  const seed=d.getFullYear()*400+d.getMonth()*31+d.getDate();
+  for(let m=a*60;m<b*60;m+=30){
+    const past=offset===0 && m<nowMin+30;
+    if(past) continue;
+    out.push({m,taken:seeded(seed+m)<.45});
+  }
+  return {d,out};
+}
+const daysEl=$('#days'), slotsEl=$('#slots');
+let selDay=0, selSlot=null;
+const dayData=[0,1,2].map(slotsFor);
+// if nothing left today, start on tomorrow
+if(!dayData[0].out.some(s=>!s.taken)) selDay=1;
+function renderDays(){
+  daysEl.innerHTML=dayData.map((x,i)=>{
+    const free=x.out.filter(s=>!s.taken).length;
+    const lbl=i===0?'Today':i===1?'Tomorrow':DAYN[x.d.getDay()].slice(0,3);
+    return `<button class="day" data-i="${i}" aria-pressed="${i===selDay}">${lbl}<b>${x.d.getDate()}</b>${free} free</button>`;
+  }).join('');
+}
+function renderSlots(){
+  const list=dayData[selDay].out;
+  slotsEl.innerHTML=list.length?list.map(s=>`<button class="slot" data-m="${s.m}" ${s.taken?'disabled':''} aria-pressed="${selSlot&&selSlot.d===selDay&&selSlot.m===s.m}">${fmt(s.m)}</button>`).join(''):'<div style="grid-column:1/-1;font-size:14px;color:var(--ink2)">No more times today — please choose tomorrow or call us.</div>';
+}
+function setSlot(d,m){
+  selDay=d; selSlot={d,m};
+  const day=d===0?'Today':d===1?'Tomorrow':DAYN[dayData[d].d.getDay()];
+  $('#sumT').textContent=`${day}, ${fmt(m)}`;
+  renderDays(); renderSlots();
+}
+daysEl.addEventListener('click',e=>{const b=e.target.closest('.day');if(!b)return;selDay=+b.dataset.i;renderDays();renderSlots();});
+slotsEl.addEventListener('click',e=>{const b=e.target.closest('.slot');if(!b||b.disabled)return;setSlot(selDay,+b.dataset.m);});
+renderDays(); renderSlots();
+
+// next free time in hero → preselect it
+const first=(()=>{for(let d=0;d<3;d++){const s=dayData[d].out.find(x=>!x.taken);if(s)return{d,m:s.m};}})();
+if(first){
+  $('#nextT').textContent=(first.d===0?'Today ':first.d===1?'Tomorrow ':'')+fmt(first.m);
+  setSlot(first.d,first.m);
+  if(first.d>0) $('#mbook').textContent=first.d===1?'Book tomorrow':'Book a time';
+}
+
+/* ---------- booking ---------- */
+$('#bk').addEventListener('submit',e=>{
+  e.preventDefault();
+  const nm=$('#nm'), ph=$('#ph');
+  let bad=false;
+  [nm,ph].forEach(i=>{const v=i.value.trim();const ok=i===ph?v.replace(/\D/g,'').length>=7:v.length>1;i.style.borderColor=ok?'':'var(--shu)';if(!ok)bad=true;});
+  if(!selSlot){$('#sumT').style.color='var(--shu)';bad=true;}
+  if(bad)return;
+  $('#bk').style.display='none';
+  $('#okTxt').textContent=`${nm.value.trim().split(' ')[0]}, your time is ${$('#sumT').textContent}. We'll text ${ph.value.trim()} with directions. Bring nothing but yourself.`;
+  $('#ok').classList.add('show');
+});
+
+/* ---------- triage ---------- */
+const sel=new Set(); let level=0;
+const scale=$('#scale');
+const col=v=>v<=3?'#5d6b4a':v<=6?'#b58a3a':'#c4432b';
+scale.innerHTML=Array.from({length:10},(_,i)=>`<button data-v="${i+1}" aria-label="Pain ${i+1} of 10">${i+1}</button>`).join('');
+scale.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;level=+b.dataset.v;paintScale();renderResult();});
+function paintScale(){[...scale.children].forEach(b=>{const v=+b.dataset.v;const on=v<=level;b.classList.toggle('on',on);b.style.background=on?col(level):'';});}
+$('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;const k=b.dataset.k;sel.has(k)?sel.delete(k):sel.add(k);b.setAttribute('aria-pressed',sel.has(k));renderResult();});
+
+const TIPS={
+  base:['Rinse gently with warm salt water (half a teaspoon in a glass).','Take an over-the-counter painkiller exactly as the package says. Never put a tablet on the gum.'],
+  throb:'Keep your head raised when lying down. It lowers the pressure that causes throbbing.',
+  swell:'Hold a cold pack on the outside of your cheek, 15 minutes on and 15 off. Never use heat.',
+  cold:'Avoid very hot, cold and sweet food and drinks, and chew on the other side.',
+  bite:'Chew on the other side and avoid hard food. A crack may be hiding.',
+  broken:'Keep any broken piece in milk and bring it with you. Cover sharp edges with sugar-free gum.',
+  wisdom:'Rinse with warm salt water after eating to keep the area clean.',
+  night:'Take your painkiller before bed and sleep with an extra pillow.'
+};
+function renderResult(){
+  const r=$('#result');
+  if(!sel.size && !level){
+    r.innerHTML=`<span class="lv">Pain check</span><h3>Choose what you feel</h3><p>It takes 10 seconds. You'll get an honest answer about how soon you should be seen, and what helps until then.</p><ol>${TIPS.base.map(t=>`<li>${t}</li>`).join('')}</ol><div class="warn"><b>Go to emergency now</b> if swelling spreads to your eye or neck, or if it's hard to breathe or swallow.</div>`;
+    return;
+  }
+  const urgent=sel.has('swell')||level>=8||(sel.has('throb')&&sel.has('night'));
+  const today=urgent||sel.has('throb')||sel.has('broken')||sel.has('night')||level>=5;
+  let lv,h,p;
+  if(urgent){lv='<span class="lv hi">● Please come today</span>';h='This sounds like it needs a dentist today';p='Swelling or severe, constant pain often means infection. It is easy to treat early, and gets harder if you wait.';}
+  else if(today){lv='<span class="lv hi">● Best seen today or tomorrow</span>';h="Let's not let this get worse";p="This won't usually get better on its own. A quick exam will tell us exactly what's happening, and stop the pain.";}
+  else{lv='<span class="lv">● Within the next few days</span>';h='Not an emergency, but worth checking';p='Sensitivity or mild pain is often a small cavity or exposed root. Both are simple to fix when caught early.';}
+  const tips=[...TIPS.base]; sel.forEach(k=>{if(TIPS[k]&&!tips.includes(TIPS[k]))tips.push(TIPS[k]);});
+  r.innerHTML=`${lv}<h3>${h}</h3><p>${p}</p><ol>${tips.slice(0,5).map(t=>`<li>${t}</li>`).join('')}</ol>
+  <div class="warn"><b>Go to emergency now</b> if swelling spreads to your eye or neck, you have a high fever, or it's hard to breathe or swallow.</div>
+  <a class="btn btn-shu" href="#book" style="width:100%">${today?'Book the next free time':'Book a check-up'}</a>
+  <div class="disc">General guidance only — not a diagnosis. A dentist will examine you properly.</div>`;
+  const nt=$('#nt'); const map={throb:'throbbing pain',bite:'pain when biting',cold:'hot/cold sensitivity',swell:'swelling',broken:'broken tooth',wisdom:'wisdom tooth area',night:'pain at night'};
+  if(!nt.dataset.touched) nt.value=[...sel].map(k=>map[k]).join(', ')+(level?` — pain ${level}/10`:'');
+}
+$('#nt').addEventListener('input',e=>e.target.dataset.touched=1);
+renderResult();
+
+/* ---------- hours ---------- */
+$('#hours').innerHTML=[1,2,3,4,5,6,0].map(d=>`<div class="${d===today?'today':''}"><span>${DAYN[d]}</span><span>${HOURS[d][0]}:00 – ${HOURS[d][1]}:00</span></div>`).join('')+`<div><span>Emergency phone line</span><span>24 hours</span></div>`;
+
+/* ---------- ensō draw ---------- */
+const enso=$('#enso'); const L=enso.getTotalLength();
+enso.style.strokeDasharray=L; enso.style.strokeDashoffset=L;
+requestAnimationFrame(()=>{enso.style.transition='stroke-dashoffset 2.2s cubic-bezier(.22,1,.36,1) .2s';enso.style.strokeDashoffset=0;});
+
+})();
+</script>
+</body>
+</html>
